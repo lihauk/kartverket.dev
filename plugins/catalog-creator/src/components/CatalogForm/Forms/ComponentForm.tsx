@@ -36,12 +36,6 @@ export const ComponentForm = ({
   componentsAndResources,
 }: ComponentFormProps) => {
   const fetchAPIs = useFetchEntities(control, 'API');
-
-  const systemVal = useWatch({
-    control,
-    name: `entities.${index}.system`,
-  });
-
   const providesApisVal = useWatch({
     control,
     name: `entities.${index}.providesApis`,
@@ -56,13 +50,6 @@ export const ComponentForm = ({
     control,
     name: `entities.${index}.dependsOn`,
   });
-
-  useUpdateDependentFormFields(
-    systems,
-    typeof systemVal === 'string' ? [systemVal] : undefined,
-    `entities.${index}.system`,
-    setValue,
-  );
 
   useUpdateDependentFormFields(
     fetchAPIs.value,
